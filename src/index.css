@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Dana;
+    src: url(../public/fonts/DanaFaNum-Regular.ttf);
+  }
+  @font-face {
+    font-family: DanaDemiBold;
+    src: url(../public/fonts/DanaFaNum-DemiBold.ttf);
+  }
+  @font-face {
+    font-family: DanaMedium;
+    src: url(../public/fonts/DanaFaNum-Medium.ttf);
+  }
+  @font-face {
+    font-family: Morabba;
+    src: url(../public/fonts/Morabba-Regular.woff2);
+  }
+  @font-face {
+    font-family: MorabbaMedium;
+    src: url(../public/fonts/Morabba-Medium.woff2);
+  }
+  @font-face {
+    font-family: MorabbaBold;
+    src: url(../public/fonts/Morabba-Bold.woff2);
+  }
+  body {
+    @apply font-Dana dark:bg-slate-700;
+  }
+  @media screen and (min-width: 640px) {
+    body::-webkit-scrollbar {
+      width: 10px;
+    }
+    body::-webkit-scrollbar-track {
+      background-color: #e7e5e4;
+    }
+    body::-webkit-scrollbar-thumb{
+      background-color: #fb923c;
+      border-radius: 20px;
+      scrollbar-width: thin;
+    }
+  }
+}

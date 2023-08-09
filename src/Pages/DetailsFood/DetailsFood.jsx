@@ -47,12 +47,9 @@ const DetailsFood = () => {
         }).then((value) => {
           navigate("/basket");
         });
-      });
+      })
   };
 
-  const sizeHandler = (e) => {
-    setFoodSize(e.target.value);
-  };
 
   return (
     <>

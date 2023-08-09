@@ -1,7 +1,6 @@
 # React + Vite
 
-Click on the link to view:
-<a hret="https://fastfoodshope.iran.liara.run/"><h1>Link</h1></a>
+Click on the link to view: [Resturan Shopp](https://fastfoodshope.iran.liara.run/)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

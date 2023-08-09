@@ -122,7 +122,7 @@ const Navbar = () => {
         </div>
       </header>
       {/* mobile header */}
-      <div className="relative md:hidden flex items-center justify-between p-2">
+      <div className="relative md:hidden flex items-center justify-between p-2 dark:text-white">
         <div className="flex gap-6">
           <RxHamburgerMenu
             className="text-3xl"

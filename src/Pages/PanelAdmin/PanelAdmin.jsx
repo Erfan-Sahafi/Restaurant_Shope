@@ -21,7 +21,7 @@ const PanelAdmin = () => {
   }, []);
 
   const getAllFood = () => {
-    fetch("http://localhost:3000/foods")
+    fetch("https://fastfoodshop.iran.liara.run/foods")
       .then((res) => res.json())
       .then((data) => {
         setAllFoods(data.reverse());
@@ -29,7 +29,7 @@ const PanelAdmin = () => {
   };
 
   const removeInPanel = (foodID) => {
-    fetch(`http://localhost:3000/foods/${foodID}`, {
+    fetch(`https://fastfoodshop.iran.liara.run/foods/${foodID}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const PanelAdmin = () => {
       desc:foodDescInput,
       src:foodImageInput,
     }
-    fetch('http://localhost:3000/foods',{
+    fetch('https://fastfoodshop.iran.liara.run/foods',{
       method: "POST",
       headers:{
         "Content-Type":"application/json"

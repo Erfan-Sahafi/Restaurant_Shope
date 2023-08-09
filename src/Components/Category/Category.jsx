@@ -18,7 +18,7 @@ const Category = () => {
   const [allCategory, setAllCategory] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/category")
+    fetch("https://fastfoodshop.iran.liara.run/category")
       .then((res) => res.json())
       .then((data) => {
         setAllCategory(data);

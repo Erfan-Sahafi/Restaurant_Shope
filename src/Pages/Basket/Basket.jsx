@@ -13,7 +13,7 @@ const Basket = () => {
   }, []);
 
   const getAllData = ()=>{
-    fetch("http://localhost:3000/basket")
+    fetch("https://fastfoodshop.iran.liara.run/basket")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -23,7 +23,7 @@ const Basket = () => {
 
   const removeInBasket = (foodID)=>{
 
-    fetch(`http://localhost:3000/basket/${foodID}`,{
+    fetch(`https://fastfoodshop.iran.liara.run/basket/${foodID}`,{
       method: "DELETE",
       headers:{
         "Content-Type":"application/json"

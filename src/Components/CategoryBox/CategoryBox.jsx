@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 import { Link } from "react-router-dom";
 
 const CategoryBox = (props) => {
+
+  Aos.init()
+
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+      delay: 300,
+      offset: 200,
+      disable: window.innerWidth < 640,
+    });
+    Aos.refresh(true)
+  }, []);
   
   return (
     <>

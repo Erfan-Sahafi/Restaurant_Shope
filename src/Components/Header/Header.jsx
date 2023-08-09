@@ -34,11 +34,11 @@ const Header = () => {
           </div>
         </section>
         <img
-          src="../../public/images/svg/wave.svg"
+          src="/images/wave.svg"
           className="hidden sm:block sm:dark:hidden absolute bottom-0"
         />
         <img
-          src="../../public/images/svg/darkwave.svg"
+          src="/images/darkwave.svg"
           className="hidden sm:dark:block absolute bottom-0"
         />
       </main>

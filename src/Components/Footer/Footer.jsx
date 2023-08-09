@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <img
               className="w-16"
-              src="../../public/images/svg/Pizza-logo.svg"
+              src="/images/Pizza-logo.svg"
               alt="logo"
             />
           </div>
@@ -54,9 +54,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex h-full gap-3 mt-6 md:gap-6 items-center">
-        <img src="../../public/images/rezi.png" className="w-16"  />
-        <img src="../../public/images/kasbokar.png" className="w-16"  />
-        <img src="../../public/images/enamad-logo.png" className="w-16"  />
+        <img src="/images/rezi.png" className="w-16"  />
+        <img src="/images/kasbokar.png" className="w-16"  />
+        <img src="/images/enamad-logo.png" className="w-16"  />
       </div>
     </div>
   );

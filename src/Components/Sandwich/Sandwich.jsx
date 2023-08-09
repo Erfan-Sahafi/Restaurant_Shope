@@ -12,7 +12,7 @@ const Sandwich = () => {
   const [allSandwiches, setAllSandwiches] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/foods?category=sandwich")
+    fetch("https://fastfoodshop.iran.liara.run/foods?category=sandwich")
       .then((res) => res.json())
       .then((data) => {
         setAllSandwiches(data);

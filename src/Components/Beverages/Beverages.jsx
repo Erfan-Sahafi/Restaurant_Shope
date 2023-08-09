@@ -13,7 +13,7 @@ const Beverages = () => {
   const [allDrinks, setAllDrinks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/foods?category=drink")
+    fetch("https://fastfoodshop.iran.liara.run/foods?category=drink")
       .then((res) => res.json())
       .then((data) => {
         setAllDrinks(data);

@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/navbar")
+    fetch("https://fastfoodshop.iran.liara.run/navbar")
       .then((res) => res.json())
       .then((data) => {
         setAllNavbar(data);
@@ -45,7 +45,7 @@ const Navbar = () => {
             <div className="shrink-0">
               <img
                 className="w-[2.5rem] lg:w-14 rotate-45"
-                src="../../public/images/svg/Pizza-logo.svg"
+                src="/images/Pizza-logo.svg"
                 alt="logo"
               />
             </div>
@@ -135,7 +135,7 @@ const Navbar = () => {
         <div className="shrink-0 flex justify-center">
           <img
             className="w-[2.5rem] rotate-45"
-            src="../../public/images/svg/Pizza-logo.svg"
+            src="/images/Pizza-logo.svg"
             alt="logo"
           />
         </div>
@@ -166,8 +166,8 @@ const Navbar = () => {
           <div className="flex items-center justify-between p-2 h-15 border-b-2 border-b-orange-300">
             <div className="shrink-0 flex justify-center">
               <img
-                className="w-[2rem] rotate-180"
-                src="../../public/images/svg/Pizza-logo.svg"
+                className="w-[2.5rem] rotate-45"
+                src="/images/Pizza-logo.svg"
                 alt="logo"
               />
             </div>
@@ -181,7 +181,7 @@ const Navbar = () => {
               {allNavbar.map((nav) => (
                 <li key={nav.id}>
                   <div className="flex items-center relative gap-x-2">
-                    <AiOutlineHome className="text-blue-500 text-2xl" />
+                    {/* <AiOutlineHome className="text-blue-500 text-2xl" /> */}
 
                     <Link
                       to={nav.href}
@@ -218,7 +218,7 @@ const Navbar = () => {
                           {nav.submenue.map((sub) => (
                             <li key={sub.id}>
                               <BiSolidLeftArrow />
-                              <a href="#">{sub.title}</a>
+                              <Link to={`/foodcategory/${sub.name}`}>{sub.title}</Link>
                             </li>
                           ))}
                         </ul>

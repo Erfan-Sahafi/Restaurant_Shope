@@ -6,7 +6,7 @@ const FoodBox = (props) => {
 
   return (
     <>
-      <div className="w-full h-[400px] select-none max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 sm:hover:-translate-y-2 ease-linear duration-200">
+      <div className="w-full  select-none max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 sm:hover:-translate-y-2 ease-linear duration-200">
         <Link to={`/detailsfood/${props.id}`}>
           <img
             className="rounded-t-lg h-52 w-full "
@@ -72,14 +72,14 @@ const FoodBox = (props) => {
               {props.score}
             </span>
           </div>
-          <div className="flex items-center justify-between gap-1 sm:gap-3">
-            <span className="text-xl sm:text-2xl font-MorabbaMedium sm:font-bold text-gray-900 dark:text-white">
+          <div className="flex flex-col items-center md:flex-row md:justify-between gap-1 sm:gap-2">
+            <span className="text-xl md:text-2xl font-MorabbaMedium sm:font-bold text-gray-900 dark:text-white">
               {props.price.toLocaleString()}
-              <span className="font-normal text-base sm:mr-2">هزارتومان</span>
+              <span className="font-DanaMedium text-[14px] ">هزارتومان</span>
             </span>
             <Link
               to={`/detailsfood/${props.id}`}
-              className="text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-Dana rounded-md text-sm p-2 sm:px-5 sm:py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-Dana rounded-md text-sm p-2 sm:px-2 sm:py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               مشاهده
             </Link>

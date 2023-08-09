@@ -13,7 +13,7 @@ const Deser = () => {
   const [allDeser, setAllDeser] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/foods?category=appetizer")
+    fetch("https://fastfoodshop.iran.liara.run/foods?category=appetizer")
       .then((res) => res.json())
       .then((data) => {
         setAllDeser(data);

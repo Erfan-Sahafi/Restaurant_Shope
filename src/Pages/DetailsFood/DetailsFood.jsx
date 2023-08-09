@@ -16,7 +16,7 @@ const DetailsFood = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/foods/${param.foodID}?_embed=comments`)
+    fetch(`https://fastfoodshop.iran.liara.run/foods/${param.foodID}?_embed=comments`)
       .then((res) => res.json())
       .then((data) => {
         setDetailsFood(data);
@@ -31,7 +31,7 @@ const DetailsFood = () => {
       price: detailsFood.price * foodNumber,
       count: foodNumber,
     };
-    fetch("http://localhost:3000/basket", {
+    fetch("https://fastfoodshop.iran.liara.run/basket", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

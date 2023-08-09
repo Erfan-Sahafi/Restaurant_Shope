@@ -6,7 +6,7 @@ const CommentBox = (props) => {
   const propsID = props.id;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/comments/${propsID}?_expand=user`)
+    fetch(`https://fastfoodshop.iran.liara.run/comments/${propsID}?_expand=user`)
       .then((res) => res.json())
       .then((data) => {
         setCommentData(data);

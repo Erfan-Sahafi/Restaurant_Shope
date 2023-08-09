@@ -6,7 +6,7 @@ const PapularFoods = () => {
   const [papularFoods, setPapularFoods] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/foods")
+    fetch("https://fastfoodshop.iran.liara.run/foods")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -22,7 +22,7 @@ const PapularFoods = () => {
   return (
     <div className="container">
       <Title title={"غذاهای محبوب"} />
-      <div className="grid gap-5 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto w-full auto-cols-max mb-12">
+      <div className="grid gap-[11px] grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto w-full auto-cols-max mb-12">
         {papularFoods.map((food) => (
           <FoodBox key={food.id} {...food} />
         ))}

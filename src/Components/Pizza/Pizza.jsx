@@ -12,7 +12,7 @@ const Pizza = () => {
   const [allPizza, setAllPizza] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/foods?category=pizza")
+    fetch("https://fastfoodshop.iran.liara.run/foods?category=pizza")
       .then((res) => res.json())
       .then((data) => {
         setAllPizza(data);
@@ -37,7 +37,7 @@ const Pizza = () => {
             spaceBetween: 15,
           },
           1024: {
-            slidesPerView: 4.2,
+            slidesPerView: 3.2,
             spaceBetween: 20,
           },
         }}

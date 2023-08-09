@@ -13,7 +13,7 @@ const FoodCategory = () => {
   const [categorySearchValue, setCategorySearchValue] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/foods?category=${param.categoryName}`)
+    fetch(`https://fastfoodshop.iran.liara.run/foods?category=${param.categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         setAllCategoryFood(data);

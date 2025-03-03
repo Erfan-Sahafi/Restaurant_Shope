@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
 import { GrFormClose } from "react-icons/gr";
 import { BiLogIn, BiSolidLeftArrow } from "react-icons/bi";
 import { BsSun, BsMoon, BsTelephone, BsInstagram } from "react-icons/bs";
 import { LiaTelegram } from "react-icons/lia";
-import { AiOutlineShoppingCart, AiOutlineHome } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  );
   const [hideSubmenu, SetHideSubmenu] = useState(false);
   const [openSideBar, SetOpenSideBar] = useState(false);
   const [allNavbar, setAllNavbar] = useState([]);
 
   useEffect(() => {
-    if (isDark) {
+    if (theme==="dark") {
       document.getElementById("intro").classList.add("dark");
     } else {
       document.getElementById("intro").classList.remove("dark");
     }
-  }, [isDark]);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const darkModHandler = () => {
-    setIsDark(!isDark);
+    setTheme(theme === 'dark' ? 'light' : 'dark')
   };
 
   useEffect(() => {

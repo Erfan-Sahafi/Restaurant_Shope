@@ -1,49 +1,51 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import swal from "sweetalert";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCartsFromServer } from "../../redux/cart/cartSlice";
 
 const Basket = () => {
-  const [basketData, setBasketData] = useState([]);
+  //const [basketData, setBasketData] = useState([]);
+
+  const basketData = useSelector((state, action) => state.cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getAllData()
+    dispatch(getCartsFromServer());
   }, []);
 
-  const getAllData = ()=>{
-    fetch("https://fastfoodshop.iran.liara.run/basket")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      setBasketData(data);
-    });
-  }
+  // const getAllData = ()=>{
+  //   fetch("https://fastfoodshop.iran.liara.run/basket")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     setBasketData(data);
+  //   });
+  // }
 
-  const removeInBasket = (foodID)=>{
+  // const removeInBasket = (foodID) => {
+  //   fetch(`https://fastfoodshop.iran.liara.run/basket/${foodID}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       swal({
+  //         title: "غذای مورد نظر حذف شد",
+  //         icon: "success",
+  //         buttons: "تایید",
+  //       }).then((value) => {
+  //         getAllData();
+  //       });
+  //     });
+  // };
 
-    fetch(`https://fastfoodshop.iran.liara.run/basket/${foodID}`,{
-      method: "DELETE",
-      headers:{
-        "Content-Type":"application/json"
-      }
-    }).then(res=>res.json())
-    .then(result=>{
-      swal({
-        title:'غذای مورد نظر حذف شد',
-        icon:"success",
-        buttons:'تایید'
-      }).then(value=>{
-        getAllData()
-      })
-    })
-
-  }
-
-  const total = basketData.reduce((acc, object) => {
-    return acc + object.price;
-  }, 0);
+  // const total = basketData.reduce((acc, object) => {
+  //   return acc + object.price;
+  // }, 0);
 
   return (
     <>
@@ -75,7 +77,7 @@ const Basket = () => {
               </thead>
               <tbody>
                 {basketData.map((data) => (
-                  <Fragment key={data.id} >
+                  <Fragment key={data.id}>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                       <td className="w-32 p-4 hidden sm:block">
                         <img src={data.src} alt="Apple Watch" />
@@ -109,12 +111,12 @@ const Basket = () => {
           )}
         </div>
         <div className="mt-12 flex flex-col gap-5 md:flex-row md:items-center md:justify-between bg-slate-300 dark:bg-slate-800 dark:text-white p-4 md:p-10 rounded-3xl">
-          <span className="font-DanaDemiBold text-base md:text-xl tracking-tighter">
+          {/* <span className="font-DanaDemiBold text-base md:text-xl tracking-tighter">
             مجموع:
             <span className="font-MorabbaMedium text-[18px] mr-1">
               {total > 0 ? total.toLocaleString() : 0}
             </span>
-          </span>
+          </span> */}
           <div className="flex gap-1 items-center">
             <label className="font-DanaDemiBold text-base md:text-xl tracking-tighter">
               کد تخفیف:

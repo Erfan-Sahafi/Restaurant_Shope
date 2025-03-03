@@ -5,27 +5,27 @@
 @layer base {
   @font-face {
     font-family: Dana;
-    src: url(../public/fonts/DanaFaNum-Regular.ttf);
+    src: url(/fonts/DanaFaNum-Regular.ttf);
   }
   @font-face {
     font-family: DanaDemiBold;
-    src: url(../public/fonts/DanaFaNum-DemiBold.ttf);
+    src: url(/fonts/DanaFaNum-DemiBold.ttf);
   }
   @font-face {
     font-family: DanaMedium;
-    src: url(../public/fonts/DanaFaNum-Medium.ttf);
+    src: url(/fonts/DanaFaNum-Medium.ttf);
   }
   @font-face {
     font-family: Morabba;
-    src: url(../public/fonts/Morabba-Regular.woff2);
+    src: url(/fonts/Morabba-Regular.woff2);
   }
   @font-face {
     font-family: MorabbaMedium;
-    src: url(../public/fonts/Morabba-Medium.woff2);
+    src: url(/fonts/Morabba-Medium.woff2);
   }
   @font-face {
     font-family: MorabbaBold;
-    src: url(../public/fonts/Morabba-Bold.woff2);
+    src: url(/fonts/Morabba-Bold.woff2);
   }
   body {
     @apply font-Dana dark:bg-slate-700;

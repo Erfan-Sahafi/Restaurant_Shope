@@ -9,7 +9,6 @@ const PapularFoods = () => {
     fetch("https://fastfoodshop.iran.liara.run/foods")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const filterPapular = data.filter((result) => {
           return result.score >= 4 && result.category !== "drink";
         });

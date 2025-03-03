@@ -8,12 +8,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import CommentBox from "../../Components/CommentBox/CommentBox";
 import Title from "../../Components/Title/Title";
 import swal from "sweetalert";
+import { useDispatch } from "react-redux";
+import { postProductToCart } from "../../redux/cart/cartSlice";
 
 const DetailsFood = () => {
   const [foodNumber, setFoodNumber] = useState(1);
   const [detailsFood, setDetailsFood] = useState({});
   const param = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(`https://fastfoodshop.iran.liara.run/foods/${param.foodID}?_embed=comments`)
@@ -24,32 +27,8 @@ const DetailsFood = () => {
   }, []);
 
   const buyHandeler = () => {
-    const addToCart = {
-      id: detailsFood.id,
-      src: detailsFood.src,
-      name: detailsFood.name,
-      price: detailsFood.price * foodNumber,
-      count: foodNumber,
-    };
-    fetch("https://fastfoodshop.iran.liara.run/basket", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(addToCart),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        swal({
-          title: "غذای شما به سبد خرید اضافه شد",
-          icon: "success",
-          buttons: "رفتن به سبد خرید",
-        }).then((value) => {
-          navigate("/basket");
-        });
-      })
+    dispatch(postProductToCart(param.foodID));
   };
-
 
   return (
     <>
@@ -79,7 +58,7 @@ const DetailsFood = () => {
                   <p className="text-[18px] ">{detailsFood.desc}</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-2 dark:text-white">
                     <span className="font-DanaMedium text-xl">تعداد:</span>
                     <div className="flex items-center gap-3">
                       <BiSolidRightArrow
@@ -102,7 +81,7 @@ const DetailsFood = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between dark:text-white">
                     <span className="font-MorabbaBold text-2xl">
                       {(detailsFood?.price * foodNumber).toLocaleString()}
                       <span className="font-DanaMedium text-base mr-1">

@@ -11,9 +11,10 @@ const FoodCategory = () => {
   const [status, setStatus] = useState("default");
   const [orderFood, setOrderFood] = useState([]);
   const [categorySearchValue, setCategorySearchValue] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`https://fastfoodshop.iran.liara.run/foods?category=${param.categoryName}`)
+    fetch(`${API_URL}/foods?category=${param.categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         setAllCategoryFood(data);

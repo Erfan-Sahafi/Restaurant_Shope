@@ -4,9 +4,11 @@ import { FaUserCircle } from "react-icons/fa";
 const CommentBox = (props) => {
   const [commentData, setCommentData] = useState({});
   const propsID = props.id;
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
-    fetch(`https://fastfoodshop.iran.liara.run/comments/${propsID}?_expand=user`)
+    fetch(`${API_URL}/comments/${propsID}?_expand=user`)
       .then((res) => res.json())
       .then((data) => {
         setCommentData(data);

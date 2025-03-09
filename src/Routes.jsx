@@ -14,6 +14,7 @@ const routes = [
     {path: "/login",element: <Login/>},
     {path: "/register",element: <Register/>},
     {path: "/basket",element: <Basket/>},
+    {path: "/panel",element: <PanelAdmin/>},
     {path: "/foodcategory/:categoryName",element: <FoodCategory/>}
 ];
 

@@ -4,22 +4,22 @@ import Footer from "../../Components/Footer/Footer";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import Navbar from "../../Components/Navbar/Navbar";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CommentBox from "../../Components/CommentBox/CommentBox";
 import Title from "../../Components/Title/Title";
-import swal from "sweetalert";
 import { useDispatch } from "react-redux";
-import { postProductToCart } from "../../redux/cart/cartSlice";
+import { addToCart } from "../../redux/cartSlice";
+import { toast } from "react-toastify";
 
 const DetailsFood = () => {
-  const [foodNumber, setFoodNumber] = useState(1);
+  const [quantity, setQuantity ] = useState(1);
   const [detailsFood, setDetailsFood] = useState({});
   const param = useParams();
-  const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`https://fastfoodshop.iran.liara.run/foods/${param.foodID}?_embed=comments`)
+    fetch(`${API_URL}/foods/${param.foodID}?_embed=comments`)
       .then((res) => res.json())
       .then((data) => {
         setDetailsFood(data);
@@ -27,7 +27,8 @@ const DetailsFood = () => {
   }, []);
 
   const buyHandeler = () => {
-    dispatch(postProductToCart(param.foodID));
+    dispatch(addToCart({...detailsFood,quantity}));
+    toast.success(`${detailsFood.name} به سبد خرید اضافه شد!`);
   };
 
   return (
@@ -64,18 +65,18 @@ const DetailsFood = () => {
                       <BiSolidRightArrow
                         className="text-orange-400 cursor-pointer"
                         onClick={() =>
-                          setFoodNumber((prevNumber) => prevNumber + 1)
+                          setQuantity((prevNumber) => prevNumber + 1)
                         }
                       />
                       <span className="font-MorabbaBold text-xl select-none">
-                        {foodNumber}
+                        {quantity}
                       </span>
                       <BiSolidLeftArrow
                         className="text-orange-400 cursor-pointer"
                         onClick={() => {
-                          setFoodNumber((prevNumber) => prevNumber - 1);
-                          if (foodNumber <= 1) {
-                            setFoodNumber(1);
+                          setQuantity((prevNumber) => prevNumber - 1);
+                          if (quantity <= 1) {
+                            setQuantity(1);
                           }
                         }}
                       />
@@ -83,7 +84,7 @@ const DetailsFood = () => {
                   </div>
                   <div className="flex justify-between dark:text-white">
                     <span className="font-MorabbaBold text-2xl">
-                      {(detailsFood?.price * foodNumber).toLocaleString()}
+                      {(detailsFood?.price * quantity).toLocaleString()}
                       <span className="font-DanaMedium text-base mr-1">
                         هزار تومان
                       </span>

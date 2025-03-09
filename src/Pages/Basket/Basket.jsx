@@ -1,51 +1,19 @@
 import { Fragment, useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
-import { getCartsFromServer } from "../../redux/cart/cartSlice";
+import { removeFromCart } from "../../redux/cartSlice";
+import { toast } from "react-toastify";
 
 const Basket = () => {
-  //const [basketData, setBasketData] = useState([]);
+  const basketData = useSelector((state) => state.items);
+  const total = useSelector((state) => state.totalPrice);
+  const dispatch = useDispatch()
 
-  const basketData = useSelector((state, action) => state.cart);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCartsFromServer());
-  }, []);
-
-  // const getAllData = ()=>{
-  //   fetch("https://fastfoodshop.iran.liara.run/basket")
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //     setBasketData(data);
-  //   });
-  // }
-
-  // const removeInBasket = (foodID) => {
-  //   fetch(`https://fastfoodshop.iran.liara.run/basket/${foodID}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       swal({
-  //         title: "غذای مورد نظر حذف شد",
-  //         icon: "success",
-  //         buttons: "تایید",
-  //       }).then((value) => {
-  //         getAllData();
-  //       });
-  //     });
-  // };
-
-  // const total = basketData.reduce((acc, object) => {
-  //   return acc + object.price;
-  // }, 0);
+  const removeInBasket = (productId)=>{
+    dispatch(removeFromCart(productId))
+    toast.success('محصول مورد نظر از سبد خرید حذف شد.')
+  }
 
   return (
     <>
@@ -86,7 +54,7 @@ const Basket = () => {
                         {data.name}
                       </td>
                       <td className="px-4 sm:px-8 py-4 font-MorabbaMedium text-base">
-                        {data.count}
+                        {data.quantity}
                       </td>
                       <td className="font-DanaDemiBold text-xs md:text-base text-gray-900 dark:text-white">
                         {data.price.toLocaleString()}
@@ -111,12 +79,12 @@ const Basket = () => {
           )}
         </div>
         <div className="mt-12 flex flex-col gap-5 md:flex-row md:items-center md:justify-between bg-slate-300 dark:bg-slate-800 dark:text-white p-4 md:p-10 rounded-3xl">
-          {/* <span className="font-DanaDemiBold text-base md:text-xl tracking-tighter">
+          <span className="font-DanaDemiBold text-base md:text-xl tracking-tighter">
             مجموع:
             <span className="font-MorabbaMedium text-[18px] mr-1">
               {total > 0 ? total.toLocaleString() : 0}
             </span>
-          </span> */}
+          </span>
           <div className="flex gap-1 items-center">
             <label className="font-DanaDemiBold text-base md:text-xl tracking-tighter">
               کد تخفیف:

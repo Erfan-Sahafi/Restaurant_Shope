@@ -3,17 +3,16 @@ import Title from "../Title/Title";
 import FoodBox from "../FoodBox/FoodBox";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
-//import { Pagination } from "swiper/modules";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 const Beverages = () => {
 
   const [allDrinks, setAllDrinks] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("https://fastfoodshop.iran.liara.run/foods?category=drink")
+    fetch(`${API_URL}/foods?category=drink`)
       .then((res) => res.json())
       .then((data) => {
         setAllDrinks(data);

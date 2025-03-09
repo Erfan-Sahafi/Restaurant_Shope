@@ -4,9 +4,11 @@ import FoodBox from "../FoodBox/FoodBox";
 
 const PapularFoods = () => {
   const [papularFoods, setPapularFoods] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
-    fetch("https://fastfoodshop.iran.liara.run/foods")
+    fetch(`${API_URL}/foods`)
       .then((res) => res.json())
       .then((data) => {
         const filterPapular = data.filter((result) => {

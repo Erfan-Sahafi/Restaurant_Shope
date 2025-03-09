@@ -12,7 +12,7 @@ const Login = () => {
         <section className="sm:container flex items-center h-[60%] sm:h-full justify-center sm:justify-start text-justify ">
           <div className="w-80 md:w-96 px-3 py-4 flex flex-col gap-4 sm:gap-6 rounded-xl border-2 border-white bg-black/60">
             <h1 className="text-center font-MorabbaBold text-orange-400 text-2xl">
-              Login
+              ورود
             </h1>
             <div className="text-white text-center tracking-tighter">
               <span>آیا ثبت نام نکردید؟</span>

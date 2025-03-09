@@ -11,9 +11,9 @@ const Register = () => {
       <Navbar />
       <main className="h-[372px] bg-loginmobile-img min-h-screen sm:bg-logindescktop-img bg-no-repeat bg-cover object-cover bg-[center_top]">
         <section className="sm:container flex items-center h-[60%] sm:h-full justify-center sm:justify-start text-justify ">
-          <div className="w-80 md:w-96 px-3 py-4 flex flex-col gap-2 sm:gap-4 rounded-xl border-2 border-white bg-black/60">
+          <div className="w-80 md:w-96 px-3 py-3 mt-10 flex flex-col gap-2 sm:gap-4 rounded-xl border-2 border-white bg-black/60">
             <h1 className="text-center font-MorabbaBold text-orange-400 text-2xl">
-              Sign Up
+              ثبت نام
             </h1>
             <div className="text-white text-center tracking-tighter">
               <span>اگر ثبت نام کرده اید.</span>

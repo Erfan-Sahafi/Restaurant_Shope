@@ -10,9 +10,10 @@ import "swiper/css/pagination";
 
 const Sandwich = () => {
   const [allSandwiches, setAllSandwiches] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("https://fastfoodshop.iran.liara.run/foods?category=sandwich")
+    fetch(`${API_URL}/foods?category=sandwich`)
       .then((res) => res.json())
       .then((data) => {
         setAllSandwiches(data);

@@ -16,9 +16,11 @@ const Category = () => {
   };
 
   const [allCategory, setAllCategory] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
-    fetch("https://fastfoodshop.iran.liara.run/category")
+    fetch(`${API_URL}/category`)
       .then((res) => res.json())
       .then((data) => {
         setAllCategory(data);

@@ -11,9 +11,11 @@ import "swiper/css/pagination";
 const Deser = () => {
 
   const [allDeser, setAllDeser] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
-    fetch("https://fastfoodshop.iran.liara.run/foods?category=appetizer")
+    fetch(`${API_URL}/foods?category=appetizer`)
       .then((res) => res.json())
       .then((data) => {
         setAllDeser(data);

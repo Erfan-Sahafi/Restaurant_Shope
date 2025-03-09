@@ -7,35 +7,43 @@ import { BsSun, BsMoon, BsTelephone, BsInstagram } from "react-icons/bs";
 import { LiaTelegram } from "react-icons/lia";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
-    localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
   );
   const [hideSubmenu, SetHideSubmenu] = useState(false);
   const [openSideBar, SetOpenSideBar] = useState(false);
   const [allNavbar, setAllNavbar] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+  
 
   useEffect(() => {
-    if (theme==="dark") {
+    if (theme === "dark") {
       document.getElementById("intro").classList.add("dark");
     } else {
       document.getElementById("intro").classList.remove("dark");
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const darkModHandler = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   useEffect(() => {
-    fetch("https://fastfoodshop.iran.liara.run/navbar")
+    fetch(`${API_URL}/navbar`)
       .then((res) => res.json())
       .then((data) => {
         setAllNavbar(data);
       });
   }, []);
+
+  const basketNumber = useSelector((state) => state.items.length);
 
   return (
     <>
@@ -104,9 +112,14 @@ const Navbar = () => {
                   onClick={darkModHandler}
                 />
               </div>
-              <div>
+              <div className="relative">
                 <Link to={"/basket"}>
                   <AiOutlineShoppingCart className="text-3xl cursor-pointer transition-colors hover:text-orange-200" />
+                  {basketNumber > 0 && (
+                    <div className="absolute -right-3 -top-3 bg-orange-400 w-6 h-6 text-center rounded-full">
+                      {basketNumber}
+                    </div>
+                  )}
                 </Link>
               </div>
             </div>
@@ -221,7 +234,9 @@ const Navbar = () => {
                           {nav.submenue.map((sub) => (
                             <li key={sub.id}>
                               <BiSolidLeftArrow />
-                              <Link to={`/foodcategory/${sub.name}`}>{sub.title}</Link>
+                              <Link to={`/foodcategory/${sub.name}`}>
+                                {sub.title}
+                              </Link>
                             </li>
                           ))}
                         </ul>

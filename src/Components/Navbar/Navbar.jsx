@@ -20,6 +20,15 @@ const Navbar = () => {
   const [openSideBar, SetOpenSideBar] = useState(false);
   const [allNavbar, setAllNavbar] = useState([]);
   const API_URL = import.meta.env.VITE_API_URL;
+
+
+  useEffect(() => {
+    if (openSideBar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [openSideBar]);
   
 
   useEffect(() => {
@@ -276,8 +285,8 @@ const Navbar = () => {
       </div>
       <div
         className={
-          openSideBar &&
-          "fixed inset-0 min-h-screen w-full z-10 bg-black/40 md:hidden ease-linear duration-300"
+          openSideBar ?
+          "fixed inset-0 h-screen w-full z-10 bg-black/40 md:hidden ease-linear duration-300" : ""
         }
       ></div>
     </>
